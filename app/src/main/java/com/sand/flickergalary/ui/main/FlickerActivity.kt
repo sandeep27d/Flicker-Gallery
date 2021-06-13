@@ -9,7 +9,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.paging.ExperimentalPagingApi
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.sand.flickergalary.NavBarItem
 import com.sand.flickergalary.R
 
 @ExperimentalPagingApi
