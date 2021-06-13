@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/gallery_dest">
+
+    <fragment
+        android:id="@+id/gallery_dest"
+        android:name="com.sand.flickergalary.ui.main.FlickerFragment" />
+    <fragment
+        android:id="@+id/fav_dest"
+        android:name="com.sand.flickergalary.ui.fav.FavFragment" />
+</navigation>
