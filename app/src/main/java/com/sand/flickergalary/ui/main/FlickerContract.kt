@@ -14,6 +14,6 @@ sealed class FlickerContract {
 
     sealed class State : UiState {
         object Idle : State()
-        object SearchResultRefreshed : State()
+        data class SearchResultRefreshed(val query: String?) : State()
     }
 }

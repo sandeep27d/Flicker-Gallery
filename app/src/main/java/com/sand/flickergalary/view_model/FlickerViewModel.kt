@@ -34,7 +34,7 @@ class FlickerViewModel(private val repo: FlickerRepo) :
                         ?: DEFAULT_QUERY
                     ).cachedIn(viewModelScope)
                     StorageManager.putString(LAST_QUERY, event.query)
-                    setState { FlickerContract.State.SearchResultRefreshed }
+                    setState { FlickerContract.State.SearchResultRefreshed(event.query) }
                 }
             }
         }

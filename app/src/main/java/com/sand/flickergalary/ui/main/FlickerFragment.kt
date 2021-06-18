@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
@@ -68,7 +69,6 @@ class FlickerFragment : BaseFragment<LayoutFlickerFragmentBinding, FlickerViewMo
             override fun onQueryTextSubmit(query: String?): Boolean {
                 viewModel.setEvent(FlickerContract.Event.SearchQuery(query))
                 closeKeyboard()
-                binding.photoList.scrollToPosition(0)
                 return true
             }
 
@@ -89,10 +89,11 @@ class FlickerFragment : BaseFragment<LayoutFlickerFragmentBinding, FlickerViewMo
     private fun collectState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collectLatest {
-                when(it) {
+                when (it) {
                     FlickerContract.State.Idle -> {}
-                    FlickerContract.State.SearchResultRefreshed -> {
+                    is FlickerContract.State.SearchResultRefreshed -> {
                         job?.cancel()
+                        binding.photoList.scrollToPosition(0)
                         collectPagedData()
                     }
                 }
